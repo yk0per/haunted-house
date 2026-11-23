@@ -1,43 +1,44 @@
 # HAUNTED HOUSE — Cursed Poker
 
-Tek dosyalık, çevrimdışı çalışan gotik poker roguelike. Firebase Hosting üzerinde statik site olarak yayınlanabilir; backend veya veritabanı gerekmez. Kayıtlar tarayıcının `localStorage` alanında tutulur.
+A single-file, offline Gothic poker roguelike. It can be deployed as a static site on Firebase Hosting; no backend or database is required. Progress is stored in the browser's `localStorage`.
 
-## İçerik
+## Contents
 
-- `index.html` — oyunun tamamı (HTML + CSS + JS + SVG, harici bağımlılık yok)
-- `firebase.json` — Firebase Hosting yapılandırması
-- `.gitignore` — Firebase/Git gereksiz dosyaları
+- `index.html` — the entire game (HTML + CSS + JS + SVG, no external dependencies at runtime)
+- `firebase.json` — Firebase Hosting configuration
+- `.gitignore` — ignores Firebase/Git artifacts
+- `README.md` — this file
 
-## Yerelde çalıştırma
+## Run locally
 
-Dosyaya çift tıklayabilirsin ya da basit bir sunucuyla açabilirsin:
+Double-click `index.html`, or serve the folder with a small local server:
 
 ```bash
 npx serve .
 ```
 
-Ardından `http://localhost:3000` adresini aç.
+Then open `http://localhost:3000`.
 
-## Firebase Hosting'e yayınlama
+## Deploy to Firebase Hosting
 
-Ön koşul: Node.js 18+ ve Firebase CLI.
+Requirements: Node.js 18+ and Firebase CLI.
 
 ```bash
 npm install -g firebase-tools
 firebase login
 cd haunted-house
-firebase use --add      # Firebase projeni seç
+firebase use --add      # select your Firebase project
 firebase deploy --only hosting
 ```
 
-Çıktıda Firebase sana `https://PROJE-ID.web.app` adresini verir.
+Firebase will print a live URL such as `https://PROJECT-ID.web.app`.
 
-## Özel domain bağlama
+## Custom domain
 
 1. Firebase Console → **Hosting** → **Add custom domain**.
-2. Domain sağlayıcısında istenen `A` / `CNAME` kayıtlarını ekle.
-3. DNS yayılınca Firebase sertifikayı otomatik oluşturur.
-4. `firebase.json` içindeki `rewrites` sayesinde tüm yollar `index.html`'e yönlenir.
+2. Add the requested `A` / `CNAME` records at your DNS provider.
+3. Once DNS propagates, Firebase issues the SSL certificate automatically.
+4. The `rewrites` rule in `firebase.json` routes all paths to `index.html`.
 
 ## GitHub
 
@@ -46,15 +47,16 @@ git init
 git add .
 git commit -m "HAUNTED HOUSE — initial release"
 git branch -M main
-git remote add origin https://github.com/KULLANICI/haunted-house.git
+git remote add origin https://github.com/USERNAME/haunted-house.git
 git push -u origin main
 ```
 
-Docker, npm build veya CI gerekmez. İstersen sonraki adımda `firebase deploy`'u GitHub Actions ile otomatikleştirebilirsin.
+No Docker, npm build step or CI is required. As a next step, you can automate `firebase deploy` with GitHub Actions.
 
-## Notlar
+## Notes
 
-- Oyun adı ve tema: **HAUNTED HOUSE**.
-- Eski `house-poker-v10.html` korunur; bu klasör yayın için temiz kopyadır.
-- Günlük seed, jokerler ve başarımlar tarayıcıda saklanır. Firebase yalnızca statik dosyayı sunar.
-- Rakip hedefi sabit eğri yerine; mevcut deste, jokerler ve yükseltmelerle 24 denemede üretilen tipik tur skoruna göre hesaplanır. Boss, bribe ve zorluk lanetleri bu hedefe eklenir.
+- Title and theme: **HAUNTED HOUSE**.
+- The original `house-poker-v10.html` is kept separately; this folder is the clean release copy.
+- Daily seeds, unlocked jokers and achievements are stored locally in the browser. Firebase only serves static files.
+- The dealer target is not a fixed curve. It is estimated from 24 simulated runs using your current deck, jokers and upgrades, then adjusted by boss, bribe and difficulty-curse modifiers.
+- The game UI is entirely in English and works offline.
