@@ -2,6 +2,12 @@
 
 A single-file, offline Gothic poker roguelike. It can be deployed as a static site on Firebase Hosting; no backend or database is required. Progress is stored in the browser's `localStorage`.
 
+## Play now
+
+[▶️ Play HAUNTED HOUSE in your browser](https://haunted-house-41002.web.app)
+
+No install, no sign-up. The game also works offline if you download `index.html` and open it directly.
+
 ## Contents
 
 - `index.html` — the entire game (HTML + CSS + JS + SVG, no external dependencies at runtime)
@@ -52,6 +58,21 @@ git push -u origin main
 ```
 
 No Docker, npm build step or CI is required. As a next step, you can automate `firebase deploy` with GitHub Actions.
+
+## GitHub Pages (alternative)
+
+You can also host the exact same folder directly from GitHub:
+
+1. Repository → **Settings** → **Pages**
+2. **Build and deployment** → Source: **Deploy from a branch**
+3. Branch: `main`, folder: `/(root)` → **Save**
+4. After a few seconds the game is live at:
+
+```text
+https://USERNAME.github.io/haunted-house/
+```
+
+GitHub shows source code when you click `index.html`; use the live URL above to actually play.
 
 ## Notes
 
