@@ -4,9 +4,10 @@ A single-file, offline Gothic poker roguelike. It can be deployed as a static si
 
 ## Play now
 
-[▶️ Play HAUNTED HOUSE in your browser](https://haunted-house-41002.web.app)
+- [▶️ Play on Firebase Hosting](https://haunted-house-41002.web.app)
+- [▶️ Play on GitHub Pages](https://yk0per.github.io/haunted-house/)
 
-No install, no sign-up. The game also works offline if you download `index.html` and open it directly.
+Both links serve the same game. No install, no sign-up. The game also works offline if you download `index.html` and open it directly.
 
 ## Contents
 
