@@ -70,7 +70,7 @@ You can also host the exact same folder directly from GitHub:
 4. After a few seconds the game is live at:
 
 ```text
-https://USERNAME.github.io/haunted-house/
+https://yk0per.github.io/haunted-house/
 ```
 
 GitHub shows source code when you click `index.html`; use the live URL above to actually play.
