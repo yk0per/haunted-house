@@ -81,4 +81,7 @@ GitHub shows source code when you click `index.html`; use the live URL above to 
 - The original `house-poker-v10.html` is kept separately; this folder is the clean release copy.
 - Daily seeds, unlocked jokers and achievements are stored locally in the browser. Firebase only serves static files.
 - The dealer target is not a fixed curve. It is estimated from 24 simulated runs using your current deck, jokers and upgrades, then adjusted by boss, bribe and difficulty-curse modifiers.
+- Beating round 14 unlocks **Endless mode**: dealers and bosses recycle and the pressure keeps rising. The run can be saved and continued.
+- In the last 3 rounds you can sell mortal jokers for gold; permanent blessings and the ultra-rare joker cannot be sold.
+- Reading the dealer now costs a rising price (4–12 gold) instead of a flat 3 gold.
 - The game UI is entirely in English and works offline.

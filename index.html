@@ -18,7 +18,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:500 15px/1.4 Fredoka,sys
 body:before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(45% 45% at 25% 25%,rgba(122,28,20,.32),transparent 70%),radial-gradient(40% 40% at 80% 70%,rgba(201,161,74,.12),transparent 70%),radial-gradient(55% 55% at 50% 10%,rgba(0,0,0,.55),transparent 70%);animation:drift 26s ease-in-out infinite alternate}
 body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 30%,rgba(0,0,0,.72) 100%),repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px)}
 @keyframes drift{to{transform:translate(5%,3%) rotate(7deg) scale(1.1)}}
-#app{max-width:560px;margin:0 auto;padding:12px 12px 44px}
+#app{max-width:560px;margin:0 auto;padding:12px 12px 44px}body.room #app{padding-bottom:104px}
 h1{font:700 22px Cinzel,Georgia,serif;margin:0;letter-spacing:.4px}
 .head{display:flex;align-items:center;justify-content:space-between;margin:18px 2px 12px}.rd{font-size:13px;color:var(--mut)}
 .win{color:var(--win)}.lose{color:var(--bad)}
@@ -31,12 +31,20 @@ h1{font:700 22px Cinzel,Georgia,serif;margin:0;letter-spacing:.4px}
 .jk i{position:absolute;top:-7px;right:-7px;background:var(--gold);color:#2a1c00;border-radius:50%;width:19px;height:19px;font:700 11px/19px Fredoka,sans-serif;text-align:center;font-style:normal;box-shadow:0 2px 0 rgba(0,0,0,.4)}
 .jk.e{background:rgba(255,255,255,.05);box-shadow:none;border:2px dashed var(--line);cursor:default}.jk.e:hover{transform:none}
 .jd{font-size:12.5px;color:var(--mut);text-align:center;min-height:38px;margin:10px 4px 0;line-height:1.4}.jd b{color:var(--fg)}
+.room .js{gap:6px;padding:8px 8px 9px;border-radius:14px;overflow-x:auto;scrollbar-width:none}
+.room .js::-webkit-scrollbar{display:none}
+.room .js .jk{min-width:52px;border-radius:8px}
+.room .jk .em{font-size:20px;line-height:1}
+.room .jk b{font-size:8.5px}
+.room .jk i{font-size:8.5px;min-width:16px;max-width:90px}
+.room .jd{min-height:0;margin:6px 4px 0;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msg{min-height:34px;padding:8px 13px;margin:8px 0;font-size:13px}
 /* top stats */
-.top{display:flex;gap:8px;align-items:stretch;margin:10px 0}
+.top{display:flex;gap:8px;align-items:stretch;margin:6px 0}
 .stat{flex:1;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:3px 10px 4px;box-shadow:0 3px 0 var(--edge)}
-.stat small{display:block;font-size:10px;color:var(--mut);line-height:1.3}.stat b{font-size:21px;line-height:1.1;font-weight:700}.stat em{font-style:normal;font-size:12px;color:var(--mut)}
+.stat small{display:block;font-size:10px;color:var(--mut);line-height:1.3}.stat b{font-size:19px;line-height:1.1;font-weight:700}.stat em{font-style:normal;font-size:12px;color:var(--mut)}
 .stat.gold b{color:var(--gold)}
-.msg{background:rgba(0,0,0,.28);border-radius:14px;padding:10px 14px;font-size:13.5px;min-height:46px;margin:12px 0;border-left:4px solid var(--gold);line-height:1.5}
+.msg{background:rgba(0,0,0,.28);border-radius:14px;padding:8px 13px;font-size:13px;min-height:34px;margin:8px 0;border-left:4px solid var(--gold);line-height:1.45}
 /* score panel */
 .scorebar{display:grid;grid-template-columns:78px 1fr 88px;gap:8px;align-items:center;background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:10px 12px;box-shadow:0 5px 0 var(--edge);margin:14px 0}
 .scorebar small{display:block;font-size:11px;color:var(--mut)}
@@ -59,12 +67,12 @@ h1{font:700 22px Cinzel,Georgia,serif;margin:0;letter-spacing:.4px}
 /* cards */
 .hc{flex:none;width:var(--w);margin-left:calc(var(--w)*-.26);cursor:pointer;-webkit-tap-highlight-color:transparent;perspective:700px;transform:translateY(calc(var(--d)*var(--d)*1.6px)) rotate(calc(var(--d)*3deg));transition:transform .3s cubic-bezier(.34,1.4,.5,1)}
 .hc:first-child{margin-left:0}
-.card{position:relative;width:100%;aspect-ratio:5/7;font-size:calc(var(--w)*.27);border-radius:calc(var(--w)*.12);color:#e8dcc4;user-select:none;
-background:repeating-linear-gradient(45deg,rgba(201,161,74,.045) 0 2px,transparent 2px 4px),linear-gradient(150deg,#241c17 45%,var(--tint,#100c0a));
-box-shadow:0 0 0 1px #000,inset 0 0 0 calc(var(--w)*.035) rgba(201,161,74,.16),0 2px 0 rgba(0,0,0,.5),0 8px 14px rgba(0,0,0,.6);
+.card{position:relative;width:100%;aspect-ratio:5/7;font-size:calc(var(--w)*.27);border-radius:calc(var(--w)*.12);color:#f3e7cd;user-select:none;
+background:repeating-linear-gradient(45deg,rgba(201,161,74,.045) 0 2px,transparent 2px 4px),linear-gradient(150deg,#37291e 45%,var(--tint,#1a130f));
+box-shadow:0 0 0 1px #000,inset 0 0 0 calc(var(--w)*.035) rgba(201,161,74,.3),inset 0 0 calc(var(--w)*.2) rgba(255,225,160,.08),0 2px 0 rgba(0,0,0,.5),0 8px 14px rgba(0,0,0,.6);
 transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .15s ease-out,opacity .25s,box-shadow .2s;animation:sway 4.6s ease-in-out infinite;animation-delay:calc(var(--k,0)*-.7s)}
 @keyframes sway{0%,100%{translate:0 0;rotate:-.7deg}50%{translate:0 -3px;rotate:.7deg}}
-.card.r{color:#ff6b6b}
+.card.r{color:#ff8580}
 .ci{position:absolute;top:.3em;left:.38em;display:flex;flex-direction:column;align-items:center;line-height:1;font:700 1em Georgia,serif;font-style:normal}
 .ci u{text-decoration:none;font-size:.85em}
 .ci.bt{top:auto;left:auto;bottom:.3em;right:.38em;transform:rotate(180deg)}
@@ -112,7 +120,7 @@ details{font-size:13px;margin:16px 2px;color:var(--mut)}td{padding:2px 10px 2px 
 .fan{display:flex;justify-content:center;--w:66px;margin:0 0 24px;height:120px;align-items:flex-end}
 .logo{font:900 46px/1 Cinzel,Georgia,serif;color:#e2d3b2;letter-spacing:2px;text-shadow:0 3px 0 #7a5208,0 0 20px rgba(201,161,74,.4),0 12px 16px rgba(0,0,0,.6)}
 .goal{display:inline-block;margin-top:14px;background:var(--panel);border:2px solid var(--line);border-radius:99px;padding:6px 16px;font-size:13px;box-shadow:0 3px 0 var(--edge)}
-.menu{display:flex;flex-direction:column;gap:14px;margin:22px 0}.menu button{font-size:19px;padding:16px}
+.menu{display:flex;flex-direction:column;gap:10px;margin:14px 0}.menu button{font-size:18px;padding:12px 14px}
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .jc{background:var(--panel);border:2px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px;box-shadow:0 4px 0 var(--edge)}
 .jc .em{font-size:26px}.jc b{font-size:14px}.jc small{color:var(--mut);font-size:11.5px;line-height:1.45}
@@ -181,8 +189,9 @@ div.cn.e{background:rgba(255,255,255,.05);border:2px dashed var(--line);box-shad
 .tag{position:relative;margin-top:14px;font:600 12px Cinzel,Georgia,serif;letter-spacing:.8px;color:var(--mut)}
 .menu button small{display:block;font-size:12px;font-weight:400;opacity:.85;margin-top:2px}
 .two{display:flex;gap:12px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
-.stats div{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:8px 4px;text-align:center;box-shadow:0 3px 0 var(--edge)}
+.stats{display:flex;gap:8px;margin:12px -12px 4px;padding:4px 12px 10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.stats::-webkit-scrollbar{height:5px}.stats::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.stats div{flex:0 0 auto;min-width:88px;scroll-snap-align:start;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:8px 10px;text-align:center;box-shadow:0 3px 0 var(--edge)}
 .stats b{display:block;font-size:20px;color:var(--gold);line-height:1.1}.stats small{font-size:10.5px;color:var(--mut)}
 .sec{margin:18px 2px 8px;font:600 13px Fredoka,sans-serif;color:var(--mut);letter-spacing:.6px}
 .mk{display:flex;gap:16px;justify-content:center;margin:14px 0}.mi{text-align:center;--w:72px}.mi small{display:block;color:var(--mut);margin-top:8px}
@@ -233,8 +242,8 @@ body.dead{background:#000}body.dead:before{display:none}
 .gunbar{display:flex;align-items:center;justify-content:space-between;margin:4px 0 0}
 .life{width:78px;text-align:center}.life small{display:block;font-size:10px;letter-spacing:1.5px;color:var(--mut)}
 .life b{font-size:19px;color:#ff5c6c;letter-spacing:2px;text-shadow:0 0 10px rgba(255,92,108,.55)}
-.gunw{flex:1;display:flex;justify-content:center;align-items:center;height:76px}
-.gunw .gun{width:124px;animation:gspin 8s linear infinite;filter:drop-shadow(0 6px 6px rgba(0,0,0,.55))}
+.gunw{flex:1;display:flex;justify-content:center;align-items:center;height:54px}
+.gunw .gun{width:102px;animation:gspin 8s linear infinite;filter:drop-shadow(0 6px 6px rgba(0,0,0,.55))}
 @keyframes gspin{to{transform:rotate(360deg)}}
 .seat{display:flex;gap:10px;align-items:center;margin:2px 4px 0;position:relative;z-index:2}
 .seat .dp{width:62px;height:62px;border-radius:16px}
@@ -242,15 +251,27 @@ body.dead{background:#000}body.dead:before{display:none}
 @keyframes seatin{from{opacity:0;transform:translateY(-70px)}}
 .dp.nod{animation:nod .5s ease}@keyframes nod{30%{transform:translateY(4px) rotate(-4deg)}60%{transform:translateY(-3px) rotate(3deg)}}
 .say.pop{animation:sayp .45s ease}@keyframes sayp{from{transform:scale(.85);opacity:.3}}
-.table{position:relative;margin:-6px 0 14px;padding:22px 4px 24px;border:0;background:none;box-shadow:none;border-radius:0;overflow:visible}
+.table{position:relative;margin:-4px 0 8px;padding:14px 4px 14px;border:0;background:none;box-shadow:none;border-radius:0;overflow:visible}
+.stage{position:relative;margin:2px 0 0;padding:0 0 6px;min-height:118px}
+.stage .seat{position:absolute;left:4px;right:4px;top:6px;margin:0;z-index:2}
+.chair{position:absolute;left:50%;top:-16px;width:190px;height:142px;margin-left:-95px;z-index:0;opacity:.7;filter:drop-shadow(0 10px 16px rgba(0,0,0,.7));pointer-events:none}
+.chair svg{width:100%;height:100%;display:block}
+.dealerrim{position:absolute;left:6%;right:6%;top:96px;height:34px;border-radius:50% 50% 40% 40%;background:linear-gradient(180deg,#3b1c12,#150a07 70%);border:2px solid #6a4429;box-shadow:inset 0 6px 14px rgba(0,0,0,.7),0 6px 14px rgba(0,0,0,.6);z-index:0;pointer-events:none}
+.actbar{position:sticky;bottom:0;z-index:8;margin:6px -12px -12px;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 78%,rgba(13,11,10,.9) 55%,transparent)}
+.actbar .row{margin:0 0 6px}.actbar button{padding:11px 12px;font-size:15px}
+.actbar .cons{margin:6px 0 0}.actbar .hint{margin:2px 0 4px}
+.minirow{display:flex;gap:8px;align-items:stretch}
+.minirow button{flex:1;padding:8px 10px;font-size:12.5px;line-height:1.25;text-shadow:none}
+.minirow button small{font-size:10.5px}
+.minirow .hint{flex:1;align-self:center;margin:0;text-align:center;font-size:12px}
 .felt{position:absolute;inset:0;border-radius:44px 44px 30px 30px;border:10px solid #24150e;background:radial-gradient(ellipse at 50% 18%,#5a121a,#2a080d 62%,#120406);box-shadow:inset 0 0 60px rgba(0,0,0,.75),0 0 0 2px #5d3a22,0 8px 0 #150b06,0 18px 26px rgba(0,0,0,.6);transform:perspective(800px) rotateX(13deg);transform-origin:50% 100%}
 .table>*:not(.felt){position:relative;z-index:1}
 .table>.clr{position:absolute;z-index:7}.table>.dk{position:absolute;z-index:2;top:20px;right:18px}
-.dhand{display:flex;justify-content:center;min-height:46px;padding:4px 0}
+.dhand{display:flex;justify-content:center;min-height:36px;padding:2px 0 0;position:relative;z-index:1;filter:drop-shadow(0 6px 5px rgba(0,0,0,.65))}
 .dhand .dc{margin:0;gap:18px}.dhand .cb2{width:25px;height:36px;margin-left:-13px;border-radius:4px}
 .mv .cb2{animation:dmv .7s ease both;animation-delay:calc(var(--i,0)*70ms)}
 @keyframes dmv{30%{transform:translateY(-9px) rotate(-9deg)}60%{transform:translate(7px,-4px) rotate(7deg)}}
-.pot{display:grid;grid-template-columns:78px 1fr 84px;gap:8px;align-items:center;margin:2px 10px 4px;color:#fff}
+.pot{display:grid;grid-template-columns:78px 1fr 84px;gap:8px;align-items:center;margin:0 10px 2px;color:#fff}
 .pot small{display:block;font-size:10.5px;opacity:.75}.pot .sw b{font-size:28px;color:var(--gold);line-height:1.1}
 .pot .hn{font-weight:600;font-size:13px;min-height:19px;text-align:center}.pot .calc{text-align:center}
 .pot #hs{font-size:12px;opacity:.85;min-height:16px}.pot #hs b{color:#fff;font-size:14px}
@@ -421,9 +442,9 @@ const UP={g:['Gold','🪙','If scored, +3 gold at the end of a round you win'],m
 const UPK=Object.keys(UP);
 const KD=[['❌','Empty'],['🃏','Card'],['🔮','Tarot'],['✨','Joker']];
 const JK=[
-{n:'Set Master',e:'🎩',b:1,d:'Three of a Kind: permanent +1 mult on every hand',k:0,sc:(j,x)=>{x.mu+=j.k},pl:(j,x)=>{if(x.t==3){j.k++;return`Set Master grows: permanent +${j.k} mult`}}},
+{n:'Set Master',e:'🎩',b:1,perm:1,d:'Three of a Kind: permanent +1 mult on every hand',k:0,sc:(j,x)=>{x.mu+=j.k},pl:(j,x)=>{if(x.t==3){j.k++;return`Set Master grows: permanent +${j.k} mult`}}},
 {n:'Farmer',e:'🌾',b:1,d:'Pair or Two Pair: +1 gold',pl:(j,x)=>{if(x.t==1||x.t==2){G.gold++;return'Farmer: +1 gold'}}},
-{n:'Color Hunter',e:'🎨',b:1,d:'Flush hands: permanent +20 chips (stacks)',k:0,sc:(j,x)=>{x.ch+=j.k*20},pl:(j,x)=>{if([5,8,10,11,12].includes(x.t)){j.k++;return`Color Hunter: permanent +${j.k*20} chips`}}},
+{n:'Color Hunter',e:'🎨',b:1,perm:1,d:'Flush hands: permanent +20 chips (stacks)',k:0,sc:(j,x)=>{x.ch+=j.k*20},pl:(j,x)=>{if([5,8,10,11,12].includes(x.t)){j.k++;return`Color Hunter: permanent +${j.k*20} chips`}}},
 {n:'King of Hearts',e:'👑',b:1,d:'Each scored ♥ card: +1 mult',sc:(j,x)=>{x.mu+=x.cs.filter(c=>c.s==1).length}},
 {n:'Royal Courtier',e:'🎭',b:1,d:'Each scored J, Q or K: +15 chips',sc:(j,x)=>{x.ch+=15*x.cs.filter(c=>c.r>10&&c.r<14).length}},
 {n:'Ace Pocket',e:'🧤',b:1,d:'Each scored Ace: +1 gold',pl:(j,x)=>{const n=x.cs.filter(c=>c.r==14).length;if(n){G.gold+=n;return`Ace Pocket: +${n} gold`}}},
@@ -437,8 +458,8 @@ const JK=[
 {n:"Gambler's Wheel",e:'🎰',b:1,d:'Each hand: random +1…+6 mult',r:3,on:j=>{j.r=1+Math.floor(rnd()*6)},sc:(j,x)=>{x.mu+=j.r},pl:j=>{j.r=1+Math.floor(rnd()*6)}},
 {n:'Deck Expander',e:'📚',b:1,d:'On pickup: add 6 random cards to your deck',on:()=>{for(let i=0;i<6;i++)deck.push(mk(2+Math.floor(rnd()*13),Math.floor(rnd()*4)));return' 6 cards added to your deck.'}},
 {n:'Master Jeweler',e:'🔨',b:1,d:'On pickup: 3 random cards gain random upgrades',on:()=>{for(let i=0;i<3;i++)deck[Math.floor(rnd()*deck.length)].u=UPK[Math.floor(rnd()*UPK.length)];return' 3 cards upgraded.'}},
-{n:'Full House Chef',e:'🍲',b:1,d:'Full House: permanent +1 mult',k:0,sc:(j,x)=>{x.mu+=j.k},pl:(j,x)=>{if(x.t==6||x.t==10){j.k++;return`Full House Chef: permanent +${j.k} mult`}}},
-{n:'Straight Scout',e:'🧭',b:1,d:'Straight: permanent +15 chips',k:0,sc:(j,x)=>{x.ch+=j.k*15},pl:(j,x)=>{if([4,8,12].includes(x.t)){j.k++;return`Straight Scout: permanent +${j.k*15} chips`}}},
+{n:'Full House Chef',e:'🍲',b:1,perm:1,d:'Full House: permanent +1 mult',k:0,sc:(j,x)=>{x.mu+=j.k},pl:(j,x)=>{if(x.t==6||x.t==10){j.k++;return`Full House Chef: permanent +${j.k} mult`}}},
+{n:'Straight Scout',e:'🧭',b:1,perm:1,d:'Straight: permanent +15 chips',k:0,sc:(j,x)=>{x.ch+=j.k*15},pl:(j,x)=>{if([4,8,12].includes(x.t)){j.k++;return`Straight Scout: permanent +${j.k*15} chips`}}},
 {n:'Last Chance',e:'⏳',b:1,d:'Last hand of the round: mult ×1.75',sc:(j,x)=>{if(x.last)x.mx*=1.75}},
 {n:'Spare Tire',e:'🛞',b:1,d:'+1 discard each round',dc:1},
 {n:'Double Move',e:'🤹',b:1,d:'+1 hand each round, but the dealer scores 30% more',hd:1,tg:1.3},
@@ -479,14 +500,20 @@ const jsum=k=>G.jk.reduce((a,j)=>a+(j[k]||0),0);
 function winScr(){
  best=Math.max(best,G.round-1);save();
  if(!G.dz)G.dz=shuf(DZ.filter(d=>!dz.includes(d.id))).slice(0,3);
- const h=`<div class="box"><h3>🏆 You broke the bank!</h3><p>You beat all ${MAXR} dealers and walked out with ${G.gold} gold.</p></div>`;
- const bt=`<div class="foot"><div class="snav"><button class="alt" onclick="scrlJump(-1)">↑ Top</button><button class="alt" onclick="scrlJump(1)">↓ End</button></div><div class="row"><button class="alt" onclick="goHome()">Main menu</button><button onclick="goDecks()">Play again</button></div></div>`,sh=shareBox();
+ const h=`<div class="box"><h3>🏆 You broke the bank!</h3><p>You beat all ${MAXR} dealers and walked out with ${G.gold} gold.</p><p>♾ <b>Endless mode</b> lets you keep playing past round ${MAXR}: recycled dealers, fresh bosses and rising pressure.</p></div>`;
+ const bt=`<div class="foot"><div class="snav"><button class="alt" onclick="scrlJump(-1)">↑ Top</button><button class="alt" onclick="scrlJump(1)">↓ End</button></div><div class="row"><button class="alt" onclick="goHome()">Main menu</button><button class="gold" onclick="startEndless()">♾ Endless</button><button onclick="goDecks()">Play again</button></div></div>`,sh=shareBox();
  if(G.dpick){const d=DZ.find(x=>x.id==G.dpick);return`<div class="scrl">`+h+`<div class="box"><h3>${d.e} ${d.n}</h3><p>Difficulty curse added: ${d.d}. It applies to all future runs.</p></div>`+sh+`</div>`+bt}
  if(!G.dz.length)return`<div class="scrl">`+h+`<div class="box"><p>Every difficulty curse is already active. You are a legend.</p></div>`+sh+`</div>`+bt;
- return`<div class="scrl">`+h+`<div class="box"><h3>Difficulty menu</h3><p>Choose a curse. It stays active in every future run. They are mild enough that winning stays possible, just harder.</p></div><div class="tiles" style="grid-template-columns:1fr">${G.dz.map(d=>`<button class="tile" onclick="pickDz('${d.id}')"><span class="ic">${d.e}</span><b>${d.n}</b><small>${d.d}</small></button>`).join('')}</div>`+sh+`</div>`;
+ return`<div class="scrl">`+h+`<div class="box"><h3>Difficulty menu</h3><p>Choose a curse. It stays active in every future run. They are mild enough that winning stays possible, just harder.</p></div><div class="tiles" style="grid-template-columns:1fr">${G.dz.map(d=>`<button class="tile" onclick="pickDz('${d.id}')"><span class="ic">${d.e}</span><b>${d.n}</b><small>${d.d}</small></button>`).join('')}</div>`+sh+`</div>`+bt;
 }
 function pickDz(id){dz.push(id);save();G.dpick=id;render()}
 function resetDz(){dz=[];save();render()}
+function startEndless(){
+ if(G.ph!='won')return;
+ G.endless=true;G.endlessOffer=false;G.round=MAXR+1;G.ph='shop';V='menu';G.act=3;G.rerolls=2;G.spins=0;G.empty=0;G.cur=null;G.offers=dealOffers();
+ G.msg='♾ Endless mode: the house sends new dealers and bosses beyond round 14. The difficulty keeps climbing.';
+ saveRun();snd(520,.3,'sine',.04,1.5);render();
+}
 let deck,pile,hand,sel=[],G,V='menu',pc=null,fresh=new Set(),busy=false,nid=0;
 let scr='home',unl=[],best=0,dz=[],rivals=[],dailyDone=0;
 function load(){try{unl=JSON.parse(localStorage.getItem('kp_jk')||'[]');best=+localStorage.getItem('kp_best')||0;dz=JSON.parse(localStorage.getItem('kp_dz')||'[]');acs=JSON.parse(localStorage.getItem('kp_ac')||'[]');rivals=JSON.parse(localStorage.getItem('kp_rv')||'[]');dailyDone=+localStorage.getItem('kp_dd')||0;unl=unl.filter(n=>JK.some(j=>j.n==n));acs=acs.filter(a=>AC.some(x=>x.id==a));st=Object.assign(st,JSON.parse(localStorage.getItem('kp_st')||'{}'))}catch(e){}}
@@ -510,12 +537,12 @@ function rivScr(){
 }
 function shareBox(){
  const seed=G.seed?seedTag(G.seed):'FREE RUN';
- const code=`${seed} · Round ${Math.min(G.round,MAXR)}/${MAXR} · ${G.score||0} pts · ${G.gold} gold`;
+ const code=`${seed} · Round ${G.endless?G.round:Math.min(G.round,MAXR)}/${G.endless?'∞':MAXR} · ${G.score||0} pts · ${G.gold} gold`;
  return`<div class="box"><h3>📋 Share your result</h3><p class="pp" style="font-size:16px">${code}</p>${G.seed?`<p class="note">Daily ${new Date().toLocaleDateString()} — everyone gets the same cards today. Same seed, same run.</p>`:''}<div class="row"><button class="alt" onclick="copyRun()">Copy result</button></div></div>`;
 }
-function copyRun(){const t=`HAUNTED HOUSE ${G.seed?seedTag(G.seed):'FREE'} — Round ${Math.min(G.round,MAXR)}, ${G.score||0} pts, ${G.gold} gold`;try{navigator.clipboard.writeText(t)}catch(e){}banner('Result copied!')}
+function copyRun(){const t=`HAUNTED HOUSE ${G.seed?seedTag(G.seed):'FREE'} — Round ${G.endless?G.round:Math.min(G.round,MAXR)}, ${G.score||0} pts, ${G.gold} gold`;try{navigator.clipboard.writeText(t)}catch(e){}banner('Result copied!')}
 function collScr(){return`<div class="head"><h1>Jokers</h1><span class="rd">${unl.length}/${JK.length} · <kbd>↑</kbd> <kbd>↓</kbd> keys</span></div><div class="scrl"><p class="note">21 blessings, 7 curses, 14 corrupted jokers whose power shifts over time, and 1 shop-only ultra-rare joker with a one-time second chance. A joker's look and effect unlock the first time you get it.</p><div class="cg">${JK.map(jc).join('')}</div></div><div class="foot"><div class="snav"><button class="alt" onclick="scrlJump(-1)">↑ Top</button><button class="alt" onclick="scrlJump(1)">↓ End</button></div><div class="row"><button class="alt" onclick="goHome()">Main menu</button></div></div>`}
-function howScr(){return`<div class="head"><h1>How to play</h1><span class="rd"><kbd>↑</kbd> <kbd>↓</kbd> keys</span></div><div class="scrl"><div class="box"><p>• Each round you get 8 cards. Select up to 5 and press Play. You have 2 hands and 2 discards per round.<br>• Score = (chips + card values) × mult. Your hands add up over the round.<br>• The dealer sits across the table with face-down cards. You never see their score. After your last hand (or when you press Call) the cards flip at the showdown: beat the dealer's total to win. A tie goes to the house.<br>• Call early after at least one hand to earn +2 gold per unused hand, but only if you are sure you are ahead.<br>• You have one life. Lose a showdown and the game ends.<br>• After each win you get 3 picks in the shop. Each visit shows 6 rotating offers one at a time (swipe or use ‹ ›); every pick replaces that offer with a fresh one, and you get 2 paid refreshes (2 gold each, +2 new offers). Jokers cost up to 16 gold, not all your gold. The mystery box allows 1 spin per visit and guarantees a prize after 2 empties. Pick "Next Round" at the top whenever you are ready.<br>• Every 3rd round (3, 6, 9, 12) and the last one is a Boss round with a special rule. Beat a boss for +6 gold and one extra pick.<br>• Jokers come in three kinds: blessings, curses, and corrupted jokers whose effects change over time. Watch their counters.<br>• Consumable cards sit in the slots under your cards. Most need cards selected first.<br>• Tap 📚 to see your deck, hands and gear. Your run autosaves at the start of every round. Keyboard: 1–8 select, Enter play, D discard, C clear.<br>• <b>Daily Run</b> gives everyone the same cards today — copy your result code from the end screen. In a normal round you can pay 3 gold to <b>read the dealer's exact score</b>.<br>• Ultra-rare jokers never drop from boxes, but sometimes appear among the shop offers for a fixed price. Devil's deals give power now and take it back later.<br>• Beat all ${MAXR} dealers to win, then pick a difficulty curse for your next runs.</p></div></div><div class="foot"><div class="snav"><button class="alt" onclick="scrlJump(-1)">↑ Top</button><button class="alt" onclick="scrlJump(1)">↓ End</button></div><div class="row"><button class="alt" onclick="goHome()">Main menu</button></div></div>`}
+function howScr(){return`<div class="head"><h1>How to play</h1><span class="rd"><kbd>↑</kbd> <kbd>↓</kbd> keys</span></div><div class="scrl"><div class="box"><p>• Each round you get 8 cards. Select up to 5 and press Play. You have 2 hands and 2 discards per round.<br>• Score = (chips + card values) × mult. Your hands add up over the round.<br>• The dealer sits across the table with face-down cards. You never see their score. After your last hand (or when you press Call) the cards flip at the showdown: beat the dealer's total to win. A tie goes to the house.<br>• Call early after at least one hand to earn +2 gold per unused hand, but only if you are sure you are ahead.<br>• You have one life. Lose a showdown and the game ends.<br>• After each win you get 3 picks in the shop. Each visit shows 6 rotating offers one at a time (swipe or use ‹ ›); every pick replaces that offer with a fresh one, and you get 2 paid refreshes (2 gold each, +2 new offers). Jokers cost up to 16 gold, not all your gold. The mystery box allows 1 spin per visit and guarantees a prize after 2 empties. Pick "Next Round" at the top whenever you are ready.<br>• Every 3rd round (3, 6, 9, 12) and the last one is a Boss round with a special rule. Beat a boss for +6 gold and one extra pick.<br>• Jokers come in three kinds: blessings, curses, and corrupted jokers whose effects change over time. Watch their counters. In the last 3 rounds you can sell mortal jokers for gold; permanent blessings cannot be sold.<br>• Consumable cards sit in the slots under your cards. Most need cards selected first.<br>• Tap 📚 to see your deck, hands and gear. Your run autosaves at the start of every round. Keyboard: 1–8 select, Enter play, D discard, C clear.<br>• <b>Daily Run</b> gives everyone the same cards today — copy your result code from the end screen. In a normal round you can pay a rising price (4–12 gold) to <b>read the dealer's exact score</b>.<br>• Ultra-rare jokers never drop from boxes, but sometimes appear among the shop offers for a fixed price. Devil's deals give power now and take it back later.<br>• Beat all ${MAXR} dealers to win, then pick a difficulty curse for your next runs.</p></div></div><div class="foot"><div class="snav"><button class="alt" onclick="scrlJump(-1)">↑ Top</button><button class="alt" onclick="scrlJump(1)">↓ End</button></div><div class="row"><button class="alt" onclick="goHome()">Main menu</button></div></div>`}
 const $=id=>document.getElementById(id);
 const mk=(r,s,u=null)=>({r,s,u,id:nid++});
 const val=c=>c.r==14?11:Math.min(c.r,10);
@@ -581,7 +608,7 @@ const CN=[
 {id:'sun',e:'☀',n:'The Sun',d:'+3 mult on every hand this round',need:0,tar:1},
 {id:'worl',e:'🌍',n:'The World',d:'+40 chips on every hand this round',need:0,tar:1},
 {id:'star',e:'⭐',n:'The Star',d:'Selected 1–3 cards all become one random suit',need:3,tar:1}];
-const isBoss=r=>(r%3==0&&r<14)||r==14;
+const isBoss=r=>r%3==0||r==14;
 function setBoss(){G.boss=null;G.salon=null;if(isBoss(G.round)){if(!G.bq.length)G.bq=shuf(BS.slice());const b={...G.bq.shift()};b.r=G.round;if(b.id=='su')b.s=Math.floor(rnd()*4);G.boss=b}else if(G.round>1){G.salon={...SL[Math.floor(rnd()*SL.length)]}}}
 const bd=b=>b.id=='su'?`${S[b.s]} cards never score`:b.d;
 const bossInfo=nx=>G.boss?`<div class="boss">👑 <b>${nx?'Next round BOSS':'BOSS'}:</b> ${G.boss.e} ${G.boss.n}. ${bd(G.boss)}. Dealer strength ×${G.boss.tf}. Win: +6 gold and +1 extra pick.</div>`:'';
@@ -673,7 +700,7 @@ tt:{n:'Dr. Fang',ti:'Dentist of Doom',p:{sk:'#ecd3c0',hr:'#eee',hs:'slick',ac:'f
 wl:{n:'The Wall',ti:'Pit Boss',p:{sk:'#9a9a9a',hr:'#555',hs:'bald',su:'#444',hat:'horn'},t:"You shall not pass. Literally.",lo:["I'm a wall. I don't feel things. Especially losses.","Keep banging your head. I have no ears."],md:"Adequate. Still a wall.",bg:"A crack... I felt a crack.",di:"Throwing cards at a wall? Bold strategy.",od:"Unexpected. I'm still a wall.",w:"Cracks... are starting to show.",l:"Bricks don't lose."},
 house:{n:'Mr. House',ti:'The Casino Owner',p:{sk:'#e8c9a8',hr:'#9a9a9a',hs:'slick',ac:'mono',su:'#101018',ti:'#ffd24a',hat:'crown'},t:"You made it this far? Cute. The house always wins.",lo:["I own the walls, the cards and your future.","Do you know how many players walked in here? Do you know how many walked out?"],md:"Mediocrity. My favorite customer.",bg:"Impressive. Who taught you to cheat?",di:"Discard all you want. I own the discard pile too.",od:"You surprise me. That's a mistake.",w:"No. This is MY casino! ...Fine. Take it.",l:"Thanks for playing. Come again. You won't."}};
 const ME={sk:'#f1c9a0',hr:'#3b2a1a',hs:'short',su:'#3f5d70',ti:'#ffd24a'},MER={sk:'#e2b48a',hr:'#777',hs:'bald',ac:'mus',su:'#6b3fa0',bow:'#ffd24a',hat:'fedora'};
-function dealer(){if(G.boss)return G.round>=14?BCH.house:BCH[G.boss.id];return DL[G.round]||BCH.house}
+function dealer(){if(G.boss)return G.round>=MAXR&&!G.endless?BCH.house:BCH[G.boss.id]||BCH.house;return DL[G.endless?((G.round-1)%MAXR)+1:G.round]||BCH.house}
 const SL=[
 {id:'pr',e:'👯',n:'Pair Room',d:'Pair, Two Pair, Three, Four and Five of a Kind: +2 mult'},
 {id:'fl',e:'🎨',n:'Flush Room',d:'Flush hands: +3 mult'},
@@ -710,7 +737,7 @@ const AC=[
 let acs=[],st={r:0,w:0,h:0,c:0,bhs:0,mg:0,bs:0},itab='deck';
 function award(id){if(acs.includes(id))return;acs.push(id);save();const a=AC.find(x=>x.id==id);setTimeout(()=>{const d=fx('toast','🏅 Achievement: '+a.n);snd(880,.2,'triangle',.06);setTimeout(()=>d.remove(),3300)},900)}
 const vib=n=>{try{navigator.vibrate&&navigator.vibrate(n)}catch(e){}};
-function mapH(){let h='<div class="map">';for(let r=1;r<=MAXR;r++){const b=isBoss(r);h+=`<div class="nd${b?' bs':''}${r<G.round?' dn':r==G.round?' cur':''}">${r<G.round?'✓':b?'👑':r}</div>`}return h+'</div>'}
+function mapH(){let h='<div class="map">';for(let r=1;r<=MAXR;r++){const b=isBoss(r);h+=`<div class="nd${b?' bs':''}${r<G.round?' dn':r==G.round&&!G.endless?' cur':''}">${r<G.round||G.endless?'✓':b?'👑':r}</div>`}if(G.endless)h+=`<div class="nd cur">∞</div>`;return h+'</div>'}
 function introScr(){
  const d=dealer(),nh=G.dh?G.dh.hands.length:1;
  return`${mapH()}${gunbar()}<div class="vs"><div class="who"><div class="pv2">${portrait(ME)}</div><small>You</small></div><div class="vsx">VS</div><div class="who foe"><div class="pv2">${portrait(d.p)}</div><small>${d.n}</small><em>${d.ti}</em></div></div>
@@ -718,11 +745,11 @@ function introScr(){
  <div class="goalrow"><div class="chip q"><i><b>?</b></i></div><div><b>The dealer's score is hidden</b><br><small class="note">${nh} hand${nh>1?'s':''} face-down on the table. You get ${G.h0} hand${G.h0>1?'s':''} and ${G.dl} discard${G.dl==1?'':'s'}. Beat the dealer's total at the showdown. A tie goes to the house.</small>${backs()}</div></div>
  ${bossInfo()}${salonInfo()}<div class="row"><button class="gold" onclick="begin()">Deal me in</button></div>`;
 }
-function begin(){G.intro=false;fresh=new Set(hand.map(c=>c.id));snd(520,.1,'triangle',.05);vib(15);render()}
-function saveRun(){try{localStorage.setItem('kp_run',JSON.stringify({d:deck,n:nid,rs:RNG?RNG.s:null,G:{...G,jk:G.jk.map(j=>({n:j.n,k:j.k,r:j.r,m:j.m,c:j.c,pen:j.pen,hd:j.hd}))}}))}catch(e){}}
+function begin(){G.intro=false;fresh=new Set(hand.map(c=>c.id));snd(520,.1,'triangle',.05);vib(15);render();setTimeout(()=>scrollTo(0,document.documentElement.scrollHeight),60)}
+function saveRun(){try{localStorage.setItem('kp_run',JSON.stringify({d:deck,n:nid,rs:RNG?RNG.s:null,G:{...G,jk:G.jk.map(j=>({n:j.n,k:j.k,r:j.r,m:j.m,c:j.c,pen:j.pen,hd:j.hd,perm:j.perm}))}}))}catch(e){}}
 function clearRun(){try{localStorage.removeItem('kp_run')}catch(e){}}
-function runInfo(){try{const o=JSON.parse(localStorage.getItem('kp_run')||'null');if(!o||!o.G||o.G.ph=='over'||o.G.ph=='won')return null;if(!DECKS.some(d=>d.id==o.G.dkId)||!o.G.jk.every(q=>JK.some(x=>x.n==q.n)))return null;return o}catch(e){return null}}
-function contRun(){const o=runInfo();if(!o)return;deck=o.d;nid=o.n;G=o.G;if(G.daily){seedRun(G.seed||todaySeed());if(o.rs!=null&&RNG)RNG.s=o.rs}else RNG=null;while(G.lv.length<HB.length)G.lv.push(0);G.hc=G.hc||[];while(G.hc.length<HB.length)G.hc.push(0);if(!Array.isArray(G.offers))G.offers=G.ph=='shop'?dealOffers():[];if(G.rerolls==null)G.rerolls=2;if(G.spins==null)G.spins=0;if(G.empty==null)G.empty=0;if(G.offerIx==null)G.offerIx=0;G.cur=null;G.jk=G.jk.map(q=>{const j={...JK.find(x=>x.n==q.n)};['k','r','m','c','pen','hd'].forEach(f=>{if(q[f]!=null)j[f]=q[f]});return j});scr='game';jsel=-1;busy=false;V='menu';document.body.classList.remove('dead');if(G.ph=='play')startRound();else render()}
+function runInfo(){try{const o=JSON.parse(localStorage.getItem('kp_run')||'null');if(!o||!o.G||o.G.ph=='over'||(o.G.ph=='won'&&!o.G.endlessOffer))return null;if(!DECKS.some(d=>d.id==o.G.dkId)||!o.G.jk.every(q=>JK.some(x=>x.n==q.n)))return null;return o}catch(e){return null}}
+function contRun(){const o=runInfo();if(!o)return;deck=o.d;nid=o.n;G=o.G;if(G.daily){seedRun(G.seed||todaySeed());if(o.rs!=null&&RNG)RNG.s=o.rs}else RNG=null;while(G.lv.length<HB.length)G.lv.push(0);G.hc=G.hc||[];while(G.hc.length<HB.length)G.hc.push(0);if(!Array.isArray(G.offers))G.offers=G.ph=='shop'?dealOffers():[];if(G.rerolls==null)G.rerolls=2;if(G.spins==null)G.spins=0;if(G.empty==null)G.empty=0;if(G.offerIx==null)G.offerIx=0;G.cur=null;G.jk=G.jk.map(q=>{const j={...JK.find(x=>x.n==q.n)};['k','r','m','c','pen','hd','perm'].forEach(f=>{if(q[f]!=null)j[f]=q[f]});return j});scr='game';jsel=-1;busy=false;V='menu';document.body.classList.remove('dead');if(G.ph=='play')startRound();else render()}
 function closeInfo(){const o=document.getElementById('ov');if(o)o.remove()}
 function openInfo(t){
  itab=t||itab;
@@ -781,23 +808,48 @@ function cls(cs){
 const CBACK=`<svg class="cback" viewBox="0 0 100 140" aria-hidden="true"><use href="#bk"/></svg>`;
 const FCACHE={},PL={2:[[50,30],[50,110]],3:[[50,30],[50,70],[50,110]],4:[[32,30],[68,30],[32,110],[68,110]],5:[[32,30],[68,30],[50,70],[32,110],[68,110]],6:[[32,30],[68,30],[32,70],[68,70],[32,110],[68,110]],7:[[32,30],[68,30],[50,50],[32,70],[68,70],[32,110],[68,110]],8:[[32,30],[68,30],[50,50],[32,70],[68,70],[50,90],[32,110],[68,110]],9:[[32,30],[68,30],[32,56],[68,56],[50,70],[32,84],[68,84],[32,110],[68,110]],10:[[32,30],[68,30],[50,43],[32,56],[68,56],[32,84],[68,84],[50,97],[32,110],[68,110]]};
 function figure(r,s){
- const rb=s==1||s==2?'#8e2420':'#394c6e',tr='#c9a14a',sk='#c9a17a',ln='#050403';
- let g=`<path d="M29 70C30 57 38 53 50 53C62 53 70 57 71 70Z" fill="${rb}" stroke="${ln}" stroke-width=".8"/><rect x="29" y="65" width="42" height="3.2" fill="${tr}"/><path d="M44 53L50 62L56 53Z" fill="#d8cbb0" stroke="${ln}" stroke-width=".5"/>`;
- g+=`<circle cx="50" cy="42" r="9" fill="${sk}" stroke="${ln}" stroke-width=".8"/><circle cx="46.5" cy="41" r="1" fill="#0a0a0a"/><circle cx="53.5" cy="41" r="1" fill="#0a0a0a"/><path d="M47 46Q50 48.4 53 46" stroke="#7a2222" fill="none" stroke-width="1"/>`;
- if(r==11)g+=`<path d="M40 38C40 27 60 27 60 38C56 34 44 34 40 38Z" fill="${rb}" stroke="${ln}" stroke-width=".8"/><path d="M58 31C67 24 71 30 64 36" fill="none" stroke="${tr}" stroke-width="2"/><path d="M41 40L41 46M59 40L59 46" stroke="#3a2418" stroke-width="2.4"/>`;
- if(r==12)g+=`<path d="M40 36L42 26L46 32L50 24L54 32L58 26L60 36Z" fill="${tr}" stroke="${ln}" stroke-width=".8"/><path d="M41 40C36 48 38 56 42 58M59 40C64 48 62 56 58 58" stroke="#3a2418" stroke-width="3" fill="none"/>`;
- if(r==13)g+=`<path d="M39 36L41 27L46 33L50 25L54 33L59 27L61 36Z" fill="${tr}" stroke="${ln}" stroke-width=".8"/><path d="M50 19L50 25M47.6 21.5L52.4 21.5" stroke="${tr}" stroke-width="1.6"/><path d="M42 44C42 57 58 57 58 44C55 51 45 51 42 44Z" fill="#8d8478" stroke="${ln}" stroke-width=".6"/>`;
+ const red=s==1||s==2,ac=red?'#c33f37':'#7d98ae',gold=red?'#d9b25c':'#b9c7d1',dark=red?'#3a0c0e':'#0e1823',cloth=red?'#5d1518':'#1b2835',glow=red?'#ff9b78':'#a8d4e6',ln='#050403';
+ let g=`<rect x="13" y="5" width="74" height="95" rx="36" fill="${dark}" stroke="${gold}" stroke-width="1.1"/>`;
+ g+=`<path d="M20 92V43Q20 16 50 6Q80 16 80 43V92Z" fill="none" stroke="${ac}" stroke-width=".7" opacity=".75"/>`;
+ g+=`<path d="M50 9V23M43 15H57" stroke="${gold}" stroke-width="1" opacity=".6"/><circle cx="50" cy="33" r="13" fill="none" stroke="${gold}" stroke-width=".6" opacity=".45"/>`;
+ g+=`<path d="M21 96Q26 68 50 65Q74 68 79 96Z" fill="${cloth}" stroke="${gold}" stroke-width=".8"/>`;
+ g+=`<path d="M36 69L50 88L64 69" fill="#d8c9a8" stroke="${gold}" stroke-width=".6"/><path d="M50 76V94" stroke="${gold}" stroke-width=".6" opacity=".7"/>`;
+ g+=`<ellipse cx="50" cy="47" rx="10" ry="12" fill="#cbbd9d" stroke="${gold}" stroke-width=".7"/>`;
+ g+=`<ellipse cx="46" cy="47" rx="2.7" ry="3.3" fill="#100c0a"/><ellipse cx="54" cy="47" rx="2.7" ry="3.3" fill="#100c0a"/>`;
+ g+=`<circle cx="46" cy="47" r="1.15" fill="${glow}"/><circle cx="54" cy="47" r="1.15" fill="${glow}"/>`;
+ g+=`<path d="M45 58Q50 61 55 58" fill="none" stroke="#8b3a2f" stroke-width="1"/>`;
+ if(r==11){
+  g+=`<path d="M34 47Q33 24 50 21Q67 24 66 47L60 38Q50 30 40 38Z" fill="${cloth}" stroke="${gold}" stroke-width=".7"/>`;
+  g+=`<path d="M68 62V80" stroke="${gold}" stroke-width="1.2"/><path d="M64 80H72L74 92H62Z" fill="${glow}" opacity=".45" stroke="${gold}" stroke-width=".8"/><circle cx="68" cy="86" r="3" fill="${glow}" opacity=".9"/>`;
+  g+=`<path d="M28 72L38 84" stroke="${gold}" stroke-width="1.5"/><path d="M38 84L34 90" stroke="${ac}" stroke-width="2"/>`;
+ }
+ if(r==12){
+  g+=`<path d="M37 36L39 23L45 31L50 19L55 31L61 23L63 36Z" fill="${gold}" stroke="${ln}" stroke-width=".8"/>`;
+  g+=`<path d="M39 32H61" stroke="${red?'#7a1c14':'#1b2835'}" stroke-width="1.2"/><circle cx="50" cy="28" r="2" fill="${red?'#7a1c14':'#1b2835'}"/>`;
+  g+=`<path d="M38 49Q33 74 42 88M62 49Q67 74 58 88" fill="none" stroke="${ac}" stroke-width="2.2" opacity=".85"/>`;
+  g+=`<path d="M50 70L54 75L50 80L46 75Z" fill="${glow}" opacity=".9" stroke="${gold}" stroke-width=".5"/>`;
+  g+=`<path d="M44 58Q50 62 56 58" fill="none" stroke="#8b3a2f" stroke-width="1.2"/>`;
+ }
+ if(r==13){
+  g+=`<path d="M34 35L35 17L43 28L50 11L57 28L65 17L66 35Z" fill="${gold}" stroke="${ln}" stroke-width=".9"/>`;
+  g+=`<path d="M50 6V16M46 11H54" stroke="${gold}" stroke-width="1.2"/>`;
+  g+=`<path d="M40 56Q50 75 60 56Q58 67 50 69Q42 67 40 56Z" fill="${gold}" opacity=".8" stroke="${ln}" stroke-width=".5"/>`;
+  g+=`<path d="M24 70L34 76M76 70L66 76" stroke="${gold}" stroke-width="2"/><circle cx="28" cy="74" r="3" fill="${ac}"/><circle cx="72" cy="74" r="3" fill="${ac}"/>`;
+  g+=`<path d="M78 40V92" stroke="${gold}" stroke-width="1.4"/><path d="M78 40L82 48L78 52L74 48Z" fill="${gold}"/>`;
+ }
+ g+=`<use href="#s${s}" x="43" y="88" width="14" height="14" fill="${ac}" opacity=".9"/>`;
  return g;
 }
 function face(r,s){
  const k=r+'-'+s;if(FCACHE[k])return FCACHE[k];
- const col=s==1||s==2?'#ff6b6b':'#e8dcc4';
+ const col=s==1||s==2?'#ff8b84':'#f6e9cd';
  const idx=`<text x="12" y="23" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="${r==10?15:18}" fill="${col}">${RK[r]}</text><use href="#s${s}" x="6" y="27" width="12" height="12" fill="${col}"/>`;
  let body;
  if(r==14)body=`<use href="#s${s}" x="25" y="45" width="50" height="50" fill="${col}"/>`;
  else if(r>=11){const f=figure(r,s);body=`<rect x="22" y="20" width="56" height="100" rx="3" fill="#1a1411" stroke="${col}" stroke-width="1.2"/><g transform="translate(2.5 3.5) scale(.95)">${f}</g><g transform="rotate(180 50 70)"><g transform="translate(2.5 3.5) scale(.95)">${f}</g></g><use href="#s${s}" x="24" y="23" width="10" height="10" fill="${col}"/><use href="#s${s}" x="66" y="107" width="10" height="10" fill="${col}" transform="rotate(180 71 112)"/>`}
  else body=PL[r].map(p=>`<use href="#s${s}" x="${p[0]-11}" y="${p[1]-11}" width="22" height="22" fill="${col}"${p[1]>70?` transform="rotate(180 ${p[0]} ${p[1]})"`:''}/>`).join('');
- return FCACHE[k]=`<svg class="cf" viewBox="0 0 100 140" aria-hidden="true">${idx}<g transform="rotate(180 50 70)">${idx}</g>${body}</svg>`;
+ const fil=`<path d="M10 31Q50 12 90 31M10 109Q50 128 90 109" fill="none" stroke="${col}" stroke-width=".6" opacity=".28"/><path d="M50 63V77M43 70H57" stroke="${col}" stroke-width=".5" opacity=".18"/>`;
+ return FCACHE[k]=`<svg class="cf" viewBox="0 0 100 140" aria-hidden="true">${idx}<g transform="rotate(180 50 70)">${idx}</g>${fil}${body}</svg>`;
 }
 function hsh(t){let h=2166136261;for(const c of t){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
 function sigil(name,b,emoji){
@@ -810,31 +862,35 @@ function sigil(name,b,emoji){
  return`<svg class="sg" viewBox="0 0 100 100">${g}</svg>`;
 }
 const LOCKED=`<svg class="sg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#120d0a" stroke="#4a3524" stroke-width="4"/><text x="50" y="66" font-size="48" text-anchor="middle" fill="#6b5334" font-family="Cinzel,Georgia,serif" font-weight="700">?</text></svg>`;
+const ash=(c,k=.45)=>{const m=/^#([\da-f]{3}|[\da-f]{6})$/i.exec(c||'');if(!m)return c||'#2a2119';let h=m[1];if(h.length==3)h=[...h].map(x=>x+x).join('');const v=parseInt(h,16),t=[34,24,18],a=[v>>16,(v>>8)&255,v&255];return'#'+a.map((x,i)=>Math.round(x*(1-k)+t[i]*k).toString(16).padStart(2,'0')).join('')};
 function portrait(p){
- const sk=p.sk||'#f1c9a0',hr=p.hr||'#3b2a1a',su=p.su||'#2b3a67',L='#1c1c1c';
- let g=`<rect width="100" height="100" fill="${p.bg||'#16463a'}"/><circle cx="50" cy="96" r="44" fill="rgba(255,255,255,.07)"/>`;
- g+=`<path d="M10 100C12 78 28 70 50 70C72 70 88 78 90 100Z" fill="${su}" stroke="${L}" stroke-width="1"/><path d="M41 70L50 84L59 70Z" fill="#fff" stroke="${L}" stroke-width=".8"/>`;
- if(p.ti)g+=`<path d="M50 84L46 92L50 100L54 92Z" fill="${p.ti}" stroke="${L}" stroke-width=".6"/>`;
- if(p.bow)g+=`<path d="M50 76L39 70L39 82ZM50 76L61 70L61 82Z" fill="${p.bow}" stroke="${L}" stroke-width=".6"/><circle cx="50" cy="76" r="3" fill="${p.bow}"/>`;
- g+=`<rect x="44" y="58" width="12" height="14" fill="${sk}" stroke="${L}" stroke-width=".8"/>`;
- if(p.hs=='long')g+=`<path d="M26 44C20 74 28 80 36 78L36 44ZM74 44C80 74 72 80 64 78L64 44Z" fill="${hr}"/>`;
+ const sk=ash(p.sk||'#f1c9a0',.42),hr=ash(p.hr||'#3b2a1a',.22),su=ash(p.su||'#2b3a67',.36),L='#090706',gold='#a87c37';
+ const ti=ash(p.ti||'#ffd24a',.26),bow=ash(p.bow||'#c0392b',.28),hb=ash(p.hb||'#b3261e',.24);
+ let g=`<rect width="100" height="100" fill="#0e0a08"/><path d="M13 100V42Q13 9 50 3Q87 9 87 42V100Z" fill="#19120d" stroke="#4a3524" stroke-width="2"/><path d="M50 4V18M26 21L38 29M74 21L62 29" stroke="#5d4529" stroke-width="1" opacity=".7"/><circle cx="50" cy="42" r="29" fill="rgba(201,161,74,.07)"/>`;
+ g+=`<path d="M8 100C10 76 28 68 50 68C72 68 90 76 92 100Z" fill="${su}" stroke="${L}" stroke-width="1"/><path d="M41 68L50 84L59 68Z" fill="#c9bca0" opacity=".8" stroke="${L}" stroke-width=".8"/><path d="M20 100Q26 80 42 74L50 84L58 74Q74 80 80 100Z" fill="#000" opacity=".28"/>`;
+ if(p.ti)g+=`<path d="M50 84L46 92L50 100L54 92Z" fill="${ti}" stroke="${L}" stroke-width=".6"/>`;
+ if(p.bow)g+=`<path d="M50 76L39 70L39 82ZM50 76L61 70L61 82Z" fill="${bow}" stroke="${L}" stroke-width=".6"/><circle cx="50" cy="76" r="3" fill="${bow}"/>`;
+ g+=`<rect x="44" y="56" width="12" height="14" fill="${sk}" stroke="${L}" stroke-width=".8"/>`;
+ if(p.hs=='long')g+=`<path d="M26 44C20 74 28 82 36 80L36 44ZM74 44C80 74 72 82 64 80L64 44Z" fill="${hr}"/>`;
  g+=`<ellipse cx="50" cy="44" rx="20" ry="23" fill="${sk}" stroke="${L}" stroke-width="1"/><ellipse cx="30" cy="46" rx="3.5" ry="5" fill="${sk}" stroke="${L}" stroke-width=".8"/><ellipse cx="70" cy="46" rx="3.5" ry="5" fill="${sk}" stroke="${L}" stroke-width=".8"/>`;
+ g+=`<path d="M30 32Q50 20 70 32L70 38Q50 28 30 38Z" fill="#000" opacity=".22"/>`;
  if(p.hs=='short')g+=`<path d="M30 40C28 16 72 16 70 40C66 30 56 27 50 27C44 27 34 30 30 40Z" fill="${hr}"/>`;
  if(p.hs=='slick')g+=`<path d="M30 38C30 14 70 14 70 38C60 24 42 26 30 38Z" fill="${hr}"/>`;
  if(p.hs=='long')g+=`<path d="M29 42C24 12 76 12 71 42C66 28 34 28 29 42Z" fill="${hr}"/>`;
- g+=`<circle cx="42" cy="44" r="2.4" fill="#222"/><circle cx="58" cy="44" r="2.4" fill="#222"/><path d="M36 37L47 40M64 37L53 40" stroke="${hr}" stroke-width="2.6" stroke-linecap="round"/><path d="M42 57Q51 63 60 55" fill="none" stroke="#8a2a2a" stroke-width="2.2" stroke-linecap="round"/>`;
+ g+=`<ellipse cx="42" cy="44" rx="2.6" ry="2.2" fill="#0d0907"/><ellipse cx="58" cy="44" rx="2.6" ry="2.2" fill="#0d0907"/><circle cx="42" cy="43.4" r=".8" fill="${gold}" opacity=".85"/><circle cx="58" cy="43.4" r=".8" fill="${gold}" opacity=".85"/><path d="M36 37L47 40M64 37L53 40" stroke="${hr}" stroke-width="2.6" stroke-linecap="round"/><path d="M42 57Q51 62 60 55" fill="none" stroke="#6b2420" stroke-width="2" stroke-linecap="round"/>`;
  if(p.ac=='mus')g+=`<path d="M38 53Q50 46 62 53Q50 58 38 53Z" fill="${hr}"/>`;
  if(p.ac=='beard')g+=`<path d="M31 52C31 76 69 76 69 52C62 63 38 63 31 52Z" fill="${hr}"/>`;
- if(p.ac=='glass')g+=`<circle cx="42" cy="44" r="6.5" fill="none" stroke="#222" stroke-width="1.8"/><circle cx="58" cy="44" r="6.5" fill="none" stroke="#222" stroke-width="1.8"/><path d="M48.5 44L51.5 44" stroke="#222" stroke-width="1.8"/>`;
- if(p.ac=='mono')g+=`<circle cx="58" cy="44" r="7" fill="rgba(180,220,255,.35)" stroke="#d4af37" stroke-width="1.8"/><path d="M63 50L66 64" stroke="#d4af37" stroke-width="1"/>`;
- if(p.ac=='patch')g+=`<ellipse cx="42" cy="44" rx="6.5" ry="6" fill="#111"/><path d="M30 34L54 42" stroke="#111" stroke-width="2"/>`;
- if(p.ac=='fang')g+=`<path d="M44 57L46 63L48 57ZM54 57L56 63L58 57Z" fill="#fff" stroke="#999" stroke-width=".4"/>`;
- if(p.hat=='top')g+=`<rect x="26" y="26" width="48" height="5" rx="2" fill="#111"/><rect x="33" y="4" width="34" height="24" rx="3" fill="#111"/><rect x="33" y="20" width="34" height="5" fill="${p.hb||'#b3261e'}"/>`;
- if(p.hat=='visor')g+=`<path d="M28 32C28 14 72 14 72 32Z" fill="#2fa36b"/><rect x="22" y="30" width="56" height="5" rx="2" fill="#2fa36b"/>`;
- if(p.hat=='crown')g+=`<path d="M30 28L34 10L42 22L50 6L58 22L66 10L70 28Z" fill="#f5c542" stroke="#a87400" stroke-width="1.5"/>`;
- if(p.hat=='horn')g+=`<path d="M30 30C20 22 22 8 32 4C30 15 36 23 40 26ZM70 30C80 22 78 8 68 4C70 15 64 23 60 26Z" fill="#d94a3a" stroke="#6b1410" stroke-width="1"/>`;
- if(p.hat=='scarf')g+=`<path d="M27 36C27 10 73 10 73 36C64 26 36 26 27 36Z" fill="#8a3fa3"/><circle cx="50" cy="22" r="3.2" fill="#ffd24a"/>`;
- if(p.hat=='fedora')g+=`<path d="M22 32L78 32L68 28C66 10 34 10 32 28Z" fill="#333" stroke="#111" stroke-width="1"/><rect x="33" y="24" width="34" height="5" fill="#b3261e"/>`;
+ if(p.ac=='glass')g+=`<circle cx="42" cy="44" r="6.5" fill="rgba(190,160,90,.08)" stroke="${gold}" stroke-width="1.5"/><circle cx="58" cy="44" r="6.5" fill="rgba(190,160,90,.08)" stroke="${gold}" stroke-width="1.5"/><path d="M48.5 44L51.5 44" stroke="${gold}" stroke-width="1.5"/>`;
+ if(p.ac=='mono')g+=`<circle cx="58" cy="44" r="7" fill="rgba(201,161,74,.2)" stroke="${gold}" stroke-width="1.8"/><path d="M63 50L66 64" stroke="${gold}" stroke-width="1"/>`;
+ if(p.ac=='patch')g+=`<ellipse cx="42" cy="44" rx="6.5" ry="6" fill="#080605"/><path d="M30 34L54 42" stroke="#0a0806" stroke-width="2"/>`;
+ if(p.ac=='fang')g+=`<path d="M44 57L46 63L48 57ZM54 57L56 63L58 57Z" fill="#d8cbb0" stroke="#7a6b52" stroke-width=".4"/>`;
+ if(p.hat=='top')g+=`<rect x="26" y="26" width="48" height="5" rx="2" fill="#100d0b"/><rect x="33" y="4" width="34" height="24" rx="3" fill="#100d0b"/><rect x="33" y="20" width="34" height="5" fill="${hb}"/>`;
+ if(p.hat=='visor')g+=`<path d="M28 32C28 14 72 14 72 32Z" fill="${ash('#2fa36b',.4)}"/><rect x="22" y="30" width="56" height="5" rx="2" fill="${ash('#2fa36b',.4)}"/>`;
+ if(p.hat=='crown')g+=`<path d="M30 28L34 10L42 22L50 6L58 22L66 10L70 28Z" fill="${gold}" stroke="#5a3c16" stroke-width="1.5"/>`;
+ if(p.hat=='horn')g+=`<path d="M30 30C20 22 22 8 32 4C30 15 36 23 40 26ZM70 30C80 22 78 8 68 4C70 15 64 23 60 26Z" fill="${ash('#d94a3a',.3)}" stroke="#541310" stroke-width="1"/>`;
+ if(p.hat=='scarf')g+=`<path d="M27 36C27 10 73 10 73 36C64 26 36 26 27 36Z" fill="${ash('#8a3fa3',.3)}"/><circle cx="50" cy="22" r="3.2" fill="${gold}"/>`;
+ if(p.hat=='fedora')g+=`<path d="M22 32L78 32L68 28C66 10 34 10 32 28Z" fill="#19140f" stroke="#090706" stroke-width="1"/><rect x="33" y="24" width="34" height="5" fill="${hb}"/>`;
+ g+=`<rect x="1" y="1" width="98" height="98" fill="none" stroke="#5d4529" stroke-width="2"/><path d="M0 0L100 100M100 0L0 100" stroke="#000" stroke-width="16" opacity=".06"/>`;
  return`<svg class="por" viewBox="0 0 100 100">${g}</svg>`;
 }
 let DTAB=null;
@@ -910,6 +966,7 @@ document.addEventListener('keydown',e=>{
  if(e.key=='Backspace'||e.key=='c'||e.key=='C')clr();
 });
 const hrows=cnt=>{let h='',lk=0;HB.forEach((b,i)=>{if(i>8&&!G.hc[i]){lk++;return}h+=`<tr><td>${HN[i]}</td><td>${b[0]+G.lv[i]*15} × ${b[1]+G.lv[i]}</td><td>${G.lv[i]?'Lv '+G.lv[i]:''}</td>${cnt?`<td>${G.hc[i]||0}×</td>`:''}</tr>`});if(lk)h+=`<tr><td colspan="4" class="note">🔒 ${lk} secret hand${lk>1?'s':''} left (hint: duplicate cards in your deck)</td></tr>`;return h};
+const CHAIR=`<svg viewBox="0 0 190 142" aria-hidden="true"><defs><linearGradient id="cw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#362218"/><stop offset="1" stop-color="#120b08"/></linearGradient><linearGradient id="cv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b1a18"/><stop offset="1" stop-color="#1a0809"/></linearGradient></defs><path d="M22 140V58Q22 12 95 5Q168 12 168 58V140Z" fill="url(#cw)" stroke="#6a4429" stroke-width="3"/><path d="M37 132V60Q37 25 95 18Q153 25 153 60V132Z" fill="url(#cv)" stroke="#8a5a32" stroke-width="2"/><path d="M95 20V128M37 60H153M44 92H146" stroke="#7a4a22" stroke-width="1.6" opacity=".8"/><path d="M95 30L88 43L95 52L102 43Z" fill="#b78a3c" opacity=".85"/><circle cx="95" cy="43" r="4" fill="#6b1410"/><path d="M28 58Q12 52 12 34M162 58Q178 52 178 34" fill="none" stroke="#5d3a22" stroke-width="3"/><path d="M12 32L8 18L16 18Z" fill="#b78a3c"/><path d="M178 32L174 18L182 18Z" fill="#b78a3c"/><circle cx="12" cy="15" r="3" fill="#ffd9a0" opacity=".85"/><circle cx="178" cy="15" r="3" fill="#ffd9a0" opacity=".85"/><path d="M18 140V122H172V140Z" fill="#1d120d" stroke="#6a4429" stroke-width="2"/></svg>`;
 const SIL=`<svg viewBox="0 0 132 100" aria-hidden="true"><defs><radialGradient id="sg" cx="50%" cy="18%" r="70%"><stop offset="0" stop-color="#2a1d12"/><stop offset="1" stop-color="#050403"/></radialGradient></defs><path d="M22 100Q24 62 52 55L80 55Q108 62 110 100Z" fill="url(#sg)" stroke="#6a4a2c" stroke-width="1.5"/><path d="M52 55L66 72L80 55L72 52L60 52Z" fill="#f2ead8" opacity=".85"/><path d="M60 60L66 66L72 60L69 58L63 58Z" fill="#7a1c14"/><ellipse cx="66" cy="32" rx="21" ry="25" fill="url(#sg)" stroke="#6a4a2c" stroke-width="1.5"/><path d="M45 24Q48 6 66 6Q84 6 87 24Q76 16 66 17Q56 16 45 24Z" fill="#0b0805"/><path d="M46 30Q38 22 42 14Q46 24 52 26Z" fill="#0b0805"/><path d="M86 30Q94 22 90 14Q86 24 80 26Z" fill="#0b0805"/></svg>`;
 const GUN=`<svg class="gun" viewBox="0 0 260 70" aria-hidden="true"><path d="M70 26L40 30C20 33 10 42 12 54L16 62L36 58L70 46Z" fill="#8a5a2b" stroke="#3a210d" stroke-width="2"/><rect x="66" y="18" width="46" height="32" rx="6" fill="#4a525e" stroke="#1d2026" stroke-width="2"/><rect x="80" y="25" width="20" height="6" rx="1" fill="#14171c"/><rect x="108" y="20" width="148" height="8" rx="4" fill="#a7b0bd" stroke="#2b2f36" stroke-width="2"/><rect x="108" y="32" width="130" height="8" rx="4" fill="#808998" stroke="#2b2f36" stroke-width="2"/><rect x="134" y="35" width="52" height="16" rx="6" fill="#7a4a22" stroke="#3a210d" stroke-width="2"/><path d="M144 38V48M154 38V48M164 38V48M174 38V48" stroke="#3a210d" stroke-width="1.5"/><rect x="250" y="14" width="6" height="7" rx="1" fill="#e7ebf0" stroke="#2b2f36" stroke-width="1"/><path d="M86 50C86 62 104 62 104 50" fill="none" stroke="#1d2026" stroke-width="3"/><rect x="94" y="48" width="3" height="8" rx="1" fill="#1d2026"/></svg>`;
 const hearts=n=>'♥'.repeat(Math.max(0,n));
@@ -920,8 +977,8 @@ function dealerMove(){document.querySelectorAll('.dhand .dc,.dhand').forEach(el=
 function transition(fn){let c=document.getElementById('cur');if(!c){c=document.createElement('div');c.id='cur';document.body.appendChild(c)}c.className='on';setTimeout(()=>{fn();setTimeout(()=>{c.className=''},260)},430)}
 function goNext(){if(busy)return;busy=true;snd(300,.25,'sine',.04,1.6);transition(()=>{busy=false;next()})}
 function readDealer(){
- if(busy||G.read||G.gold<3||!G.dh)return;
- G.gold-=3;G.read=true;snd(920,.18,'sine',.05);vib(20);
+ const p=readC();if(busy||G.read||G.gold<p||!G.dh)return;
+ G.gold-=p;G.read=true;snd(920,.18,'sine',.05);vib(20);
  G.msg=`👁 <b>Read the dealer:</b> the house total is <b>${G.dh.total}</b>. You know exactly what you need now.`;
  render();
 }
@@ -946,9 +1003,9 @@ function resolveRound(won,m,d0,dh){
   const rare=JK.find(j=>j.rare&&!G.jk.some(x=>x.n===j.n));G.rj=rare&&rnd()<.10?{...rare,p:RARE_PRICE}:null;
   G.dev=rnd()<.38?pickDev():null;
   if(G.round>=2)award('r1');if(bw)award('bo');if(G.round>=8)award('k8');if(G.gold>=50)award('rc');
-  if(G.round>MAXR){award('wn');st.w++;if(dz.length)award('hd');if(G.daily){dailyDone=todaySeed()}clearRun();save()}
+  if(G.round>MAXR&&!G.endless){award('wn');st.w++;G.endlessOffer=true;if(dz.length)award('hd');if(G.daily){dailyDone=todaySeed()}save()}
   m+=` <span class="win">You beat the dealer! +${gain+bw} gold</span>${bw?' 👑 Boss defeated: +1 extra pick!':''} (unused hands: +${un}${G.pend?`, gold cards: +${G.pend}`:''}${jr?`, jokers: ${jr>0?'+':''}${jr}`:''}).`+(rwm.length?' '+rwm.join('. ')+'.':'');
-  G.ph=G.round>MAXR?'won':'shop';V='menu';G.act=bw?4:3;if(G.ph=='shop'){G.rerolls=2;G.spins=0;G.empty=0;G.cur=null;G.offerIx=0;G.offers=dealOffers()}G.msg=m;if(G.ph=='shop')saveRun();
+  G.ph=G.round>MAXR&&!G.endless?'won':'shop';V='menu';G.act=bw?4:3;if(G.ph=='shop'){G.rerolls=2;G.spins=0;G.empty=0;G.cur=null;G.offerIx=0;G.offers=dealOffers()}G.msg=m;saveRun();
   document.body.classList.remove('dead');render();burst();vib([60,40,90]);
  }else{
   const mercy=G.jk.find(j=>j.rare&&j.n=='Last Breath'&&!j.k);
@@ -965,7 +1022,7 @@ function resolveRound(won,m,d0,dh){
   if(G.lives<=0){G.ph='over';if(G.daily)dailyDone=todaySeed();clearRun();save();document.body.classList.add('dead');render()}else startRound();
  }
 }
-const jMin=()=>4+G.round,jMax=()=>16,jPrice=()=>Math.min(G.gold,jMax()),cCost=()=>Math.max(1,3+G.cn-(G.vc.includes('ds')?1:0)),lvC=()=>4-(G.vc.includes('ds')?1:0),bs=id=>!!G.boss&&G.boss.id==id,vh=id=>G.vc.includes(id)?1:0;
+const readC=()=>Math.min(12,3+Math.ceil(G.round/2)),jMin=()=>Math.min(16,4+G.round),sellPrice=j=>Math.max(2,Math.min(10,3+Math.ceil(G.round/2)+(j.b==2?2:0))),canSell=j=>!j.perm&&!j.rare&&(j.b!=1||j.k!=null||j.m!=null||j.c!=null||j.pen!=null||j.hd!=null),sellable=()=>G.ph=='shop'&&!G.endless&&MAXR-G.round<=3?G.jk.map((j,i)=>({j,i})).filter(o=>canSell(o.j)):[],jMax=()=>16,jPrice=()=>Math.min(G.gold,jMax()),cCost=()=>Math.max(1,3+G.cn-(G.vc.includes('ds')?1:0)),lvC=()=>4-(G.vc.includes('ds')?1:0),bs=id=>!!G.boss&&G.boss.id==id,vh=id=>G.vc.includes(id)?1:0;
 function newGame(id,daily){
  RNG=null;if(daily)seedRun(todaySeed());
  nid=0;deck=[];for(let s=0;s<4;s++)for(let r=2;r<=14;r++)deck.push(mk(r,s));if(dz.includes('dk'))for(let i=0;i<2;i++)deck.splice(Math.floor(rnd()*deck.length),1);
@@ -1056,7 +1113,7 @@ function play(){
   if(G.hl==0)endRound();else render();
  },950);
 }
-function next(){G.msg=`Round ${G.round} begins.${G.boss?' 👑 BOSS ROUND!':''}`;startRound()}
+function next(){G.msg=`${G.endless?'♾ Endless · ':''}Round ${G.round} begins.${G.boss?' 👑 BOSS ROUND!':''}`;startRound()}
 function pickJoker(){
  const r=rnd(),cu=dz.includes('cu')?.24:.14,kind=r<cu?0:r<cu+.24?2:1,own=G.jk.map(j=>j.n);
  // ultra-rare (Last Breath) is shop-only: never drawn from random joker picks
@@ -1095,6 +1152,11 @@ function joker(){
  const p=jPrice();if(p<jMin()||G.jk.length>=G.slots)return;
  const j=pickJoker();G.gold-=p;const nw=gain(j);
  done(`You paid ${p} gold and drew: <b>${j.n}</b> (${jlab(j)}): ${j.d}.${nw}${G.gold>0?' You kept '+G.gold+' gold.':''}`);
+}
+function sellJ(i){
+ const o=sellable().find(x=>x.i==i);if(!o)return;
+ const p=sellPrice(o.j);G.gold+=p;G.jk.splice(i,1);jsel=-1;snd(840,.12,'triangle',.05);
+ done(`💰 You sold <b>${o.j.n}</b> for ${p} gold. It is gone for this run.`);
 }
 function setUp(u){
  const c=deck.find(x=>x.id==pc);if(!c||G.gold<cCost())return;G.gold-=cCost();G.cn++;c.u=u;
@@ -1137,16 +1199,20 @@ function jokerBar(){
 function playScr(){
  const n=hand.length,d=dealer(),rev=G.read&&G.dh?G.dh.total:null;
  return`${bossInfo()}${salonInfo()}${gunbar()}
- <div class="seat${ENTER?' enter':''}"><div class="dp">${portrait(d.p)}</div><div class="di"><b>${d.n}</b><small>${d.ti}</small></div><div class="say" id="say">${G.say||d.t}</div></div>
+ <div class="stage"><div class="chair">${CHAIR}</div><div class="dealerrim"></div>
+  <div class="seat${ENTER?' enter':''}"><div class="dp">${portrait(d.p)}</div><div class="di"><b>${d.n}</b><small>${d.ti}</small></div><div class="say" id="say">${G.say||d.t}</div></div>
+ </div>
  <div class="table"><div class="felt"></div><div class="dhand">${backs()}</div>
   <div class="pot"><div class="sw"><small>Your score</small><b id="sc">${G.score}</b></div>
    <div class="calc"><div class="hn" id="hn">Select cards (0/5)</div><div class="mx"><span class="cb" id="sch">0</span><i>×</i><span class="mb" id="scm">0</span></div><div id="hs"></div></div>
    <div class="cw"><div class="chip q"><i><b>${rev!=null?rev:'?'}</b></i></div><small>House: ${rev!=null?'REVEALED':'hidden'}</small></div></div>
   <button class="clr" id="cl" onclick="clr()" style="display:none">✕ Clear</button><div class="dk">${CBACK}<b>${pile.length}</b></div><div class="wager" id="wager" style="--push:92px"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i></div>
   <div class="hand">${hand.map((c,i)=>cardH(c,i,(fresh.has(c.id)?'nw':'')+(bs('su')&&c.s==G.boss.s&&c.u!='i'?' db':''),'tog',`--d:${i-(n-1)/2};--k:${i}`)).join('')}</div></div>
- <div class="row"><button id="dc" class="red" onclick="discard()">Discard (${G.dl})</button><button id="go" class="blue" onclick="play()">Play</button></div>
- ${G.read?`<div class="hint">👁 House total revealed: <b>${rev}</b> — you know exactly what you need.</div>`:`<button class="red wide" id="rd" onclick="readDealer()" ${G.gold>=3?'':'disabled'}>🔍 Read the dealer · 3 gold<small>Reveal the house's exact score for this round</small></button>`}
- <button class="alt wide" id="cb" onclick="callShow()">Call showdown early<small>+2 gold per unused hand, but you must be ahead</small></button>${consRow()}
+ ${consRow()}
+ <div class="actbar">
+  <div class="row"><button id="dc" class="red" onclick="discard()">Discard (${G.dl})</button><button id="go" class="blue" onclick="play()">Play</button></div>
+  <div class="minirow">${G.read?`<div class="hint">👁 House total: <b>${rev}</b></div>`:`<button class="red" id="rd" onclick="readDealer()" ${G.gold>=readC()?'':'disabled'}>🔍 Read · ${readC()}g</button>`}<button class="alt" id="cb" onclick="callShow()" ${G.hl<=0||G.hl>=G.h0?'disabled':''}>Call showdown<small>+2g / unused hand</small></button></div>
+ </div>
  <details><summary>Hand table</summary><table>${hrows(0)}</table>Card values: 2–10 face value, J Q K 10, A 11. High Card, Pair, Two Pair, Three and Four of a Kind score only the cards that form the hand (High Card: only the highest card). Secret hands (Five of a Kind, Flush House...) need duplicate cards in your deck.</details>`;
 }
 const tile=(ic,t,s,fn,ok)=>`<button class="tile" onclick="${fn}" ${ok?'':'disabled'}><span class="ic">${ic}</span><b>${t}</b><small>${s}</small></button>`;
@@ -1161,6 +1227,7 @@ function shopPool(){
  if(G.gold>=3&&G.cons.length<G.cslots)o.push({id:'tr',ic:'🔮',t:'Draw tarot',s:'3 gold',ok:true});
  if(G.gold>=1&&(G.spins||0)<1)o.push({id:'box',ic:'🎲',t:'Mystery box',s:'from 1 gold · 1 spin/visit',ok:true});
  if(G.gold>=4&&G.cons.length<G.cslots)o.push({id:'pack',ic:'🎴',t:'Consumable pack',s:'4 gold',ok:true});
+ if(sellable().length)o.push({id:'sell',ic:'💰',t:'Sell a joker',s:'last 3 rounds only · mortal jokers',ok:true,keep:1});
  if(G.gold>=jMin()&&G.jk.length<G.slots)o.push({id:'jok',ic:'🃏',t:'Joker',s:'up to '+jMax()+' gold (min '+jMin()+')',ok:true});
  if(G.vo&&G.gold>=G.vo.p)o.push({id:'vc',ic:G.vo.e,t:G.vo.n,s:G.vo.p+' gold',ok:true,keep:1});
  if(G.rj&&G.gold>=RARE_PRICE&&G.jk.length<G.slots)o.push({id:'rj',ic:'🌟',t:'ULTRA RARE: '+G.rj.n,s:RARE_PRICE+' gold · '+G.rj.e,ok:true,keep:1});
@@ -1173,7 +1240,7 @@ function offer(id){
  const o=shopPool().find(x=>x.id==id);if(!o||!o.ok)return;
  const lbl=document.getElementById('shopOffersPos'),m=lbl&&lbl.textContent.match(/\d+/);G.offerIx=m?Math.max(0,+m[0]-1):0;
  G.cur=id;if(id=='pack')G.pk=genPack();if(id=='box')G.bet=Math.min(2,G.gold);
- V=({up:'cust',rm:'rm',mk:'mk',lv:'lvl',lv2:'lv2',tr:'tr',box:'box',pack:'cn',jok:'jok',vc:'vc',rj:'rare',br:'br',dev:'dev'})[id]||'menu';snd(520,.05);render();
+ V=({up:'cust',rm:'rm',mk:'mk',lv:'lvl',lv2:'lv2',tr:'tr',box:'box',pack:'cn',jok:'jok',sell:'sell',vc:'vc',rj:'rare',br:'br',dev:'dev'})[id]||'menu';snd(520,.05);render();
 }
 function rerollShop(){
  if(G.rerolls<1||G.gold<2||G.act<1)return;
@@ -1203,7 +1270,12 @@ function shopScr(){if(V=='vc')return vcScr();if(V=='cn')return cnScr();if(V=='tr
  }
  if(V=='lvl')return`<div class="box"><h3>📈 Random Level-Up</h3><p>A random common hand levels up: +15 chips, +1 mult. You don't get to choose which.</p>
   ${G.lv.some(x=>x)?`<p>${G.lv.map((x,i)=>x?`${HN[i]}: Lv ${x}`:'').filter(Boolean).join(' • ')}</p>`:''}<div class="row">${back}<button onclick="lvl()" ${G.gold>=lvC()?'':'disabled'}>Confirm · ${lvC()} gold</button></div></div>`;
- if(V=='jok')return`<div class="box"><h3>🃏 Joker</h3><p>You can't choose: it gives you a random joker for <b>up to ${jMax()} gold</b> (min ${jMin()}). Most are blessings, but cursed and corrupted jokers exist too (corrupted jokers change over time). You can't get rid of a joker. Any gold above the price stays with you. Slots: ${G.jk.length}/${G.slots}</p>
+ if(V=='sell'){
+  const list=sellable();
+  if(!list.length)return`<div class="box"><h3>💰 Sell a joker</h3><p>Nothing to sell here. Permanent blessings and the ultra-rare joker can never be sold.</p><div class="row">${back}</div></div>`;
+  return`<div class="box"><h3>💰 Sell a joker</h3><p>Only in the last 3 rounds: cursed, corrupted and spent jokers can be released for gold. Permanent blessings are bound to you.</p><div class="tiles" style="grid-template-columns:1fr">${list.map(o=>`<button class="tile" onclick="sellJ(${o.i})"><span class="ic">${o.j.e}</span><b>${o.j.n}</b><span class="ds">${o.j.d}</span><small>Sell · +${sellPrice(o.j)} gold</small></button>`).join('')}</div><div class="row">${back}</div></div>`;
+ }
+ if(V=='jok')return`<div class="box"><h3>🃏 Joker</h3><p>You can't choose: it gives you a random joker for <b>up to ${jMax()} gold</b> (min ${jMin()}). Most are blessings, but cursed and corrupted jokers exist too (corrupted jokers change over time). Mortal jokers can be sold in the last 3 rounds; permanent blessings stay. Any gold above the price stays with you. Slots: ${G.jk.length}/${G.slots}</p>
   <div class="row">${back}<button onclick="joker()" ${G.gold>=jMin()&&G.jk.length<G.slots?'':'disabled'}>Confirm · ${jPrice()} gold</button></div></div>`;
  if(V=='box')return`<div class="box"><h3>🎲 Mystery Box</h3><p>Bet gold and spin the reel. The prize is never gold: it is upgraded card(s) added on top of your 52, a tarot card, or a joker. It is empty most of the time. A bigger bet improves your odds a little (up to 8 gold); 4+ gold gives 2 cards and 8+ gold gives 3.</p>
   <div class="reel" id="reel"><div class="mark"></div><div class="trk" id="trk">${reelItems(Array.from({length:12},rk))}</div></div>
@@ -1329,7 +1401,7 @@ function render(){
  if(scr!='game')document.body.classList.remove('dead');
  if(scr!='game'){h=scr=='home'?homeScr():scr=='jokers'?collScr():scr=='decks'?deckScr():scr=='acs'?acScr():scr=='rivals'?rivScr():howScr()}
  else{
-  h=jokerBar()+`<div class="top"><div class="stat"><small>Round ❤${G.lives}${G.boss&&G.ph=='play'?' 👑':''}</small><b>${Math.min(G.round,MAXR)}<em>/${MAXR}</em></b></div><div class="stat gold"><small>Gold</small><b id="gd">${G.gold}</b></div>${G.ph=='play'?`<div class="stat"><small>Hands</small><b>${G.hl}</b></div><div class="stat"><small>Discards</small><b>${G.dl}</b></div>`:''}<button class="ico" onclick="openInfo('deck')">📚</button><button class="ico" id="qb" onclick="quit()">✕</button></div>
+  h=jokerBar()+`<div class="top"><div class="stat"><small>Round ❤${G.lives}${G.boss&&G.ph=='play'?' 👑':''}</small><b>${G.endless?G.round:Math.min(G.round,MAXR)}<em>/${G.endless?'∞':MAXR}</em></b></div><div class="stat gold"><small>Gold</small><b id="gd">${G.gold}</b></div>${G.ph=='play'?`<div class="stat"><small>Hands</small><b>${G.hl}</b></div><div class="stat"><small>Discards</small><b>${G.dl}</b></div>`:''}<button class="ico" onclick="openInfo('deck')">📚</button><button class="ico" id="qb" onclick="quit()">✕</button></div>
  <div class="msg">${G.msg}</div>`+(G.ph=='play'?(G.intro?introScr():playScr()):G.ph=='shop'?shopScr():endScr());
  }
  $('app').innerHTML=`<div class="pgw${an?' in':''}">${h}</div>`;
